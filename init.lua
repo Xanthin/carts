@@ -1,6 +1,14 @@
 
 dofile(minetest.get_modpath("carts").."/functions.lua")
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if intllib then
+	S = intllib.Getter()
+else
+	S = function(s) return s end
+end
+
 --
 -- Cart entity
 --
@@ -434,7 +442,7 @@ minetest.register_entity("carts:cart", cart)
 
 
 minetest.register_craftitem("carts:cart", {
-	description = "Minecart",
+	description = S("Minecart"),
 	inventory_image = minetest.inventorycube("cart_top.png", "cart_side.png", "cart_side.png"),
 	wield_image = "cart_side.png",
 	
@@ -472,7 +480,7 @@ minetest.register_craft({
 --
 
 minetest.register_node(":default:rail", {
-	description = "Rail",
+	description = S("Rail"),
 	drawtype = "raillike",
 	tiles = {"default_rail.png", "default_rail_curved.png", "default_rail_t_junction.png", "default_rail_crossing.png"},
 	inventory_image = "default_rail.png",
@@ -489,7 +497,7 @@ minetest.register_node(":default:rail", {
 })
 
 minetest.register_node("carts:powerrail", {
-	description = "Powered Rail",
+	description = S("Powered Rail"),
 	drawtype = "raillike",
 	tiles = {"carts_rail_pwr.png", "carts_rail_curved_pwr.png", "carts_rail_t_junction_pwr.png", "carts_rail_crossing_pwr.png"},
 	inventory_image = "carts_rail_pwr.png",
@@ -524,7 +532,7 @@ minetest.register_node("carts:powerrail", {
 })
 
 minetest.register_node("carts:brakerail", {
-	description = "Brake Rail",
+	description = S("Brake Rail"),
 	drawtype = "raillike",
 	tiles = {"carts_rail_brk.png", "carts_rail_curved_brk.png", "carts_rail_t_junction_brk.png", "carts_rail_crossing_brk.png"},
 	inventory_image = "carts_rail_brk.png",
